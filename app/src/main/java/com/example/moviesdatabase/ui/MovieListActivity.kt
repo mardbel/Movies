@@ -24,15 +24,22 @@ class MovieListActivity : AppCompatActivity() {
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(this)
         viewModel.getMovies()
-
         viewModel.movie.observe(this, Observer {
             adapter.movies = it
         })
 
-        Intent(this, MovieDetailActivity::class.java).also {
-            startActivity(it)
-        }
+        adapter.setOnClickListener(object : MovieListAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+
+
+                val intent = Intent(this@MovieListActivity, MovieDetailActivity::class.java)
+                    .putExtra("selected movie", position)
+                startActivity(intent)
+            }
+        })
     }
+
 }
+
 
 
