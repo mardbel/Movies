@@ -1,20 +1,20 @@
 package com.example.moviesdatabase.viewmodels
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviesdatabase.data.Movie
-import com.example.moviesdatabase.data.MoviesProvider
+import com.example.moviesdatabase.repository.MoviesRepository
 
 class MovieListViewModel : ViewModel() {
 
-    val movie = MutableLiveData<List<Movie>>()
+    var movie = MoviesRepository.getMoviesPlayingNow()
 
-    fun getMovies() {
-        val movies = MoviesProvider.getMoviesList()
-        movie.postValue(movies)
+    /*fun getMovies() {
+        var movies = MoviesRepository.getMoviesPlayingNow()
+        movie = movies*/
     }
 
 
-}
+
 
 

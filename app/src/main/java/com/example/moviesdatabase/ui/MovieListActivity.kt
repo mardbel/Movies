@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moviesdatabase.data.Movie
 import com.example.moviesdatabase.databinding.ActivityMovieListBinding
 import com.example.moviesdatabase.viewmodels.MovieListViewModel
 
@@ -23,10 +24,13 @@ class MovieListActivity : AppCompatActivity() {
         val recycler = binding.recyclerMovieList
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(this)
-        viewModel.getMovies()
-        viewModel.movie.observe(this, Observer {
+
+        val moviesObserver = Observer<List<Movie>>{
             adapter.movies = it
-        })
+        }
+
+        viewModel.movie.observe(this, moviesObserver)
+
 
         adapter.setOnClickListener(object : MovieListAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {

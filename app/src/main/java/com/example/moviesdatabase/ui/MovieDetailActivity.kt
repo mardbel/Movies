@@ -22,7 +22,7 @@ class MovieDetailActivity : AppCompatActivity() {
         var intent = intent
         val position: Int = intent.getIntExtra("selected movie", 0)
 
-        viewModel.getMovies()
+
         viewModel.movie.observe(this, Observer {
             var descriptionTV = binding.descriptionTextView
             var tittleTV = binding.tittleTextView
