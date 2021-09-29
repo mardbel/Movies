@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Movie(
-    @SerializedName("tittle") val tittle: String,
+    @SerializedName("title") val title: String,
     @SerializedName("poster_path") val posterPath: String?,
     @SerializedName("vote_average") val rating: Double,
     @SerializedName("genre_ids") var genres: List<Int>,
